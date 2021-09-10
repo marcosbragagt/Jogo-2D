@@ -84,7 +84,7 @@ class Game():
                     # Health
                     self.hitbox = (self.x, self.y, 64, 64)
                     self.health = 40
-                    self.lives = 1
+                    self.lives = 0
                     self.alive = True
 
                 def move_hero(self, userInput):
@@ -227,6 +227,12 @@ class Game():
                     if player.hitbox[0] < enemy.x + 32 < player.hitbox[0] + player.hitbox[2] and player.hitbox[1] < enemy.y + 32 < player.hitbox[1] + player.hitbox[3]:
                         if player.health > 0:
                             player.health -= 1
+                            
+                            # Linha Alterada abaixo
+                            toque = pygame.mixer.Sound('Musicas\Passou.wav')
+                            toque.play()
+                            
+                            
                             if player.health == 0 and player.lives > 0:
                                 player.lives -= 1
                                 player.health = 40
